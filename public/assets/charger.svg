@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" role="img" aria-label="Ilustración conceptual de accesorio tecnológico"><defs>
+<linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f1ea"/><stop offset=".16" stop-color="#8b929a"/><stop offset=".32" stop-color="#f9fafb"/><stop offset=".54" stop-color="#9ca4ad"/><stop offset=".75" stop-color="#e5e9ed"/><stop offset="1" stop-color="#505860"/></linearGradient>
+<linearGradient id="black" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#575c62"/><stop offset=".2" stop-color="#202326"/><stop offset=".55" stop-color="#0b0e11"/><stop offset=".8" stop-color="#2c3035"/><stop offset="1" stop-color="#060709"/></linearGradient>
+<linearGradient id="cream" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f4f0"/><stop offset=".45" stop-color="#d1cfc9"/><stop offset="1" stop-color="#888985"/></linearGradient>
+<linearGradient id="dial" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#272a2d"/><stop offset=".6" stop-color="#08090a"/><stop offset="1" stop-color="#1e2023"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5b9a9"/><stop offset=".22" stop-color="#f5ebe0"/><stop offset=".5" stop-color="#92897e"/><stop offset=".78" stop-color="#e2d6c7"/><stop offset="1" stop-color="#635a51"/></linearGradient>
+<radialGradient id="glass"><stop stop-color="#1c2026"/><stop offset=".7" stop-color="#050607"/><stop offset="1" stop-color="#16191f"/></radialGradient>
+<filter id="blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="30"/></filter>
+<filter id="drop" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="16" dy="28" stdDeviation="24" flood-color="#141920" flood-opacity=".33"/></filter>
+</defs><ellipse cx="380" cy="615" rx="210" ry="52" fill="#050607" opacity=".23" filter="url(#blur)"/>
+<g transform="rotate(-18 375 375)" filter="url(#drop)">
+<path d="M243 201Q245 164 288 164H471Q515 164 515 210V511Q515 550 470 550H285Q243 550 243 508Z" fill="url(#cream)" stroke="#bdc0c1" stroke-width="3"/>
+<path d="M270 203H488" stroke="white" opacity=".8" stroke-width="5"/>
+<rect x="307" y="116" width="28" height="80" rx="9" fill="url(#metal)"/>
+<rect x="419" y="116" width="28" height="80" rx="9" fill="url(#metal)"/>
+<path d="M320 380H436" stroke="#898f94" stroke-width="4" opacity=".45"/>
+<text x="379" y="355" text-anchor="middle" fill="#7b8389" font-family="Arial" font-size="21" letter-spacing="5">NEXO</text>
+<rect x="328" y="477" width="100" height="22" rx="11" fill="#c3c7c9"/>
+</g></svg>

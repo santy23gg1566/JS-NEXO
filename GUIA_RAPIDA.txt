@@ -1,0 +1,21 @@
+JS NEXO — ADMIN PANEL (INSTRUCCIONES RÁPIDAS)
+
+1) Extrae el archivo ZIP.
+2) Crea un repositorio GitHub: https://github.com/new
+3) Sube TODO EL CONTENIDO de la carpeta JS_NEXO_ADMIN_READY.
+   Debe haber: netlify.toml, package.json, public/ y netlify/.
+4) En Netlify: Add new project > Import an existing project > GitHub.
+5) Selecciona tu repositorio. Usa Publish directory: public.
+   Functions directory: netlify/functions. Base directory: vacía.
+6) Deploy.
+7) En Netlify > Project configuration > Environment variables:
+   JS_ADMIN_PASSWORD = tu contraseña privada (12+ caracteres)
+   JS_ADMIN_SECRET = 64 caracteres aleatorios (por ejemplo generados en PowerShell).
+8) Vuelve a desplegar desde Deploys para aplicar las variables.
+9) Abre https://TU-SITIO.netlify.app/admin/ e inicia sesión.
+10) Edita los datos y pulsa PUBLICAR CAMBIOS.
+
+Pedidos WhatsApp: 849-503-8748.
+No publiques tus contraseñas en GitHub ni las compartas.
+
+LEE GUIA_INSTALACION_PASO_A_PASO.md PARA TODOS LOS PASOS Y CAPTURAS MENTALES.

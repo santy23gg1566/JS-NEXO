@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" role="img" aria-label="Ilustración conceptual de accesorio tecnológico"><defs>
+<linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f1ea"/><stop offset=".16" stop-color="#8b929a"/><stop offset=".32" stop-color="#f9fafb"/><stop offset=".54" stop-color="#9ca4ad"/><stop offset=".75" stop-color="#e5e9ed"/><stop offset="1" stop-color="#505860"/></linearGradient>
+<linearGradient id="black" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#575c62"/><stop offset=".2" stop-color="#202326"/><stop offset=".55" stop-color="#0b0e11"/><stop offset=".8" stop-color="#2c3035"/><stop offset="1" stop-color="#060709"/></linearGradient>
+<linearGradient id="cream" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f4f0"/><stop offset=".45" stop-color="#d1cfc9"/><stop offset="1" stop-color="#888985"/></linearGradient>
+<linearGradient id="dial" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#272a2d"/><stop offset=".6" stop-color="#08090a"/><stop offset="1" stop-color="#1e2023"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5b9a9"/><stop offset=".22" stop-color="#f5ebe0"/><stop offset=".5" stop-color="#92897e"/><stop offset=".78" stop-color="#e2d6c7"/><stop offset="1" stop-color="#635a51"/></linearGradient>
+<radialGradient id="glass"><stop stop-color="#1c2026"/><stop offset=".7" stop-color="#050607"/><stop offset="1" stop-color="#16191f"/></radialGradient>
+<filter id="blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="30"/></filter>
+<filter id="drop" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="16" dy="28" stdDeviation="24" flood-color="#141920" flood-opacity=".33"/></filter>
+</defs><ellipse cx="380" cy="620" rx="216" ry="52" fill="#050607" opacity=".23" filter="url(#blur)"/>
+<g filter="url(#drop)">
+<path d="M190 560Q375 525 560 560L599 610Q370 637 153 610Z" fill="url(#metal)" stroke="#89919a" stroke-width="4"/>
+<path d="M350 530L448 248L479 264L390 557Z" fill="url(#metal)" stroke="#8c9298" stroke-width="4"/>
+<rect x="224" y="122" width="288" height="355" rx="45" transform="rotate(11 368 299)" fill="#0e1118" stroke="url(#metal)" stroke-width="16"/>
+<rect x="248" y="147" width="237" height="304" rx="24" transform="rotate(11 368 299)" fill="url(#glass)"/>
+<circle cx="380" cy="288" r="55" fill="none" stroke="#6687f4" stroke-width="5" opacity=".6"/>
+<path d="M364 293l14 13 27-31" fill="none" stroke="#d9e6ff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+</g></svg>

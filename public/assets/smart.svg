@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" role="img" aria-label="Ilustración conceptual de accesorio tecnológico"><defs>
+<linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f1ea"/><stop offset=".16" stop-color="#8b929a"/><stop offset=".32" stop-color="#f9fafb"/><stop offset=".54" stop-color="#9ca4ad"/><stop offset=".75" stop-color="#e5e9ed"/><stop offset="1" stop-color="#505860"/></linearGradient>
+<linearGradient id="black" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#575c62"/><stop offset=".2" stop-color="#202326"/><stop offset=".55" stop-color="#0b0e11"/><stop offset=".8" stop-color="#2c3035"/><stop offset="1" stop-color="#060709"/></linearGradient>
+<linearGradient id="cream" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f4f0"/><stop offset=".45" stop-color="#d1cfc9"/><stop offset="1" stop-color="#888985"/></linearGradient>
+<linearGradient id="dial" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#272a2d"/><stop offset=".6" stop-color="#08090a"/><stop offset="1" stop-color="#1e2023"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5b9a9"/><stop offset=".22" stop-color="#f5ebe0"/><stop offset=".5" stop-color="#92897e"/><stop offset=".78" stop-color="#e2d6c7"/><stop offset="1" stop-color="#635a51"/></linearGradient>
+<radialGradient id="glass"><stop stop-color="#1c2026"/><stop offset=".7" stop-color="#050607"/><stop offset="1" stop-color="#16191f"/></radialGradient>
+<filter id="blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="30"/></filter>
+<filter id="drop" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="16" dy="28" stdDeviation="24" flood-color="#141920" flood-opacity=".33"/></filter>
+</defs><ellipse cx="400" cy="640" rx="155" ry="44" fill="#050607" opacity=".25" filter="url(#blur)"/>
+<g transform="rotate(-18 375 375)" filter="url(#drop)">
+<path d="M297 20C310 6 440 8 452 20L436 230H312Z" fill="url(#cream)"/>
+<path d="M312 525H438L452 734Q374 744 295 734Z" fill="url(#cream)"/>
+<rect x="252" y="193" width="245" height="364" rx="82" fill="url(#metal)"/>
+<rect x="264" y="206" width="220" height="338" rx="70" fill="#0b0d12"/>
+<rect x="280" y="222" width="188" height="306" rx="59" fill="url(#glass)"/>
+<circle cx="375" cy="347" r="70" fill="none" stroke="#657eff" stroke-width="22" stroke-dasharray="330 110" transform="rotate(-95 375 347)"/>
+<circle cx="375" cy="347" r="47" fill="none" stroke="#b5d1cc" stroke-width="15" stroke-dasharray="185 110" transform="rotate(-100 375 347)"/>
+<text x="375" y="471" font-family="Arial" fill="#fafafa" font-size="34" font-weight="700" text-anchor="middle">10:09</text>
+<rect x="498" y="344" width="18" height="41" rx="7" fill="url(#metal)"/>
+</g></svg>

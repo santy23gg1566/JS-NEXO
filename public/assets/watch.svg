@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 750" role="img" aria-label="Ilustración conceptual de accesorio tecnológico"><defs>
+<linearGradient id="metal" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f4f1ea"/><stop offset=".16" stop-color="#8b929a"/><stop offset=".32" stop-color="#f9fafb"/><stop offset=".54" stop-color="#9ca4ad"/><stop offset=".75" stop-color="#e5e9ed"/><stop offset="1" stop-color="#505860"/></linearGradient>
+<linearGradient id="black" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#575c62"/><stop offset=".2" stop-color="#202326"/><stop offset=".55" stop-color="#0b0e11"/><stop offset=".8" stop-color="#2c3035"/><stop offset="1" stop-color="#060709"/></linearGradient>
+<linearGradient id="cream" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f6f4f0"/><stop offset=".45" stop-color="#d1cfc9"/><stop offset="1" stop-color="#888985"/></linearGradient>
+<linearGradient id="dial" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#272a2d"/><stop offset=".6" stop-color="#08090a"/><stop offset="1" stop-color="#1e2023"/></linearGradient>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c5b9a9"/><stop offset=".22" stop-color="#f5ebe0"/><stop offset=".5" stop-color="#92897e"/><stop offset=".78" stop-color="#e2d6c7"/><stop offset="1" stop-color="#635a51"/></linearGradient>
+<radialGradient id="glass"><stop stop-color="#1c2026"/><stop offset=".7" stop-color="#050607"/><stop offset="1" stop-color="#16191f"/></radialGradient>
+<filter id="blur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="30"/></filter>
+<filter id="drop" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="16" dy="28" stdDeviation="24" flood-color="#141920" flood-opacity=".33"/></filter>
+</defs><ellipse cx="415" cy="608" rx="196" ry="55" fill="#050607" opacity=".23" filter="url(#blur)"/>
+<g transform="rotate(28 375 375)" filter="url(#drop)">
+<path d="M285 35 C280 22 470 22 466 35 L445 270 H307 Z" fill="url(#black)" stroke="#34373a" stroke-width="3"/>
+<path d="M307 490 H445 L466 713 Q375 733 285 713Z" fill="url(#black)" stroke="#34373a" stroke-width="3"/>
+<path d="M314 42L320 260M436 42L430 260M314 500L319 703M436 500L430 703" stroke="#989b9e" opacity=".3" stroke-width="3"/>
+<rect x="485" y="356" width="32" height="42" rx="10" fill="url(#metal)"/>
+<circle cx="375" cy="380" r="186" fill="#575c60"/>
+<circle cx="375" cy="376" r="181" fill="url(#metal)"/>
+<circle cx="375" cy="376" r="160" fill="#33383d"/>
+<circle cx="375" cy="376" r="154" fill="url(#glass)" stroke="#0a0b0c" stroke-width="5"/>
+<circle cx="375" cy="376" r="139" fill="none" stroke="#c1b6a6" stroke-width="1.5" opacity=".63"/>
+<path d="M260 285Q312 238 376 231" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="10" stroke-linecap="round"/>
+<line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="5" transform="rotate(0 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(30 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(60 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="5" transform="rotate(90 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(120 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(150 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="5" transform="rotate(180 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(210 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(240 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="5" transform="rotate(270 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(300 375 376)" stroke-linecap="round"/><line x1="375" y1="245" x2="375" y2="263" stroke="#d7c6ad" stroke-width="2" transform="rotate(330 375 376)" stroke-linecap="round"/>
+<text x="375" y="323" fill="#d9d0c2" text-anchor="middle" font-family="Arial,sans-serif" letter-spacing="8" font-size="19" font-weight="700">NEXO</text>
+<text x="375" y="336" fill="#999b9b" text-anchor="middle" font-family="Arial" letter-spacing="3" font-size="8">STUDIO SERIES</text>
+<path d="M375 376V282" stroke="#f2e9d9" stroke-width="9" stroke-linecap="round"/>
+<path d="M375 376L444 425" stroke="#d1c3ad" stroke-width="8" stroke-linecap="round"/>
+<path d="M375 376L334 485" stroke="#fcf9ee" stroke-width="3" stroke-linecap="round"/>
+<circle cx="375" cy="376" r="10" fill="url(#steel)"/>
+</g></svg>
