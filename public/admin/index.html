@@ -151,7 +151,7 @@ async function api(action,body,method){
  return data;
 }
 function showLogin(message){$('#loginScreen').hidden=false;$('#appScreen').hidden=true;$('#mobileToolbar').hidden=true;if(message){$('#loginNotice').textContent=message;$('#loginNotice').classList.add('error')}}
-async function start(){try{const me=await api('me');if(me.authenticated){await openPanel()}else showLogin(me.configured?'Introduce tu contraseña para administrar JS NEXO.':'Faltan las variables privadas JS_ADMIN_PASSWORD y JS_ADMIN_SECRET en Netlify. Consulta la guía de instalación.')}catch(e){showLogin(e.message)}}
+async function start(){try{const me=await api('me');if(me.authenticated){await openPanel()}else showLogin(me.configured?'Introduce tu contraseña para administrar JS NEXO.':me.setupHint==='password'?'JS_ADMIN_PASSWORD no se recibe o tiene menos de 12 caracteres en Production. Revisa Functions y vuelve a desplegar.':me.setupHint==='secret'?'JS_ADMIN_SECRET no se recibe o tiene menos de 32 caracteres en Production. Revisa Functions y vuelve a desplegar.':'El servidor no recibe una contraseña válida (12+ caracteres) y una clave de sesión (32+ caracteres) en Production. Revisa Netlify Functions y vuelve a desplegar.')}catch(e){showLogin(e.message)}}
 async function openPanel(){model=await api('state');dirty=false;status('Todos los cambios publicados','saved');$('#loginScreen').hidden=true;$('#appScreen').hidden=false;$('#mobileToolbar').hidden=false;renderAll();navigate(activePage)}
 function navigate(page){if(!model)return;activePage=page;$$('[data-page-content]').forEach(el=>el.classList.toggle('active',el.dataset.pageContent===page));$$('#sideNav button').forEach(el=>el.classList.toggle('active',el.dataset.page===page));window.scrollTo({top:0,behavior:'instant'})}
 function setData(field,value){if(!model)return;model.site[field]=value;markDirty()}
@@ -164,7 +164,7 @@ function renderAll(){
  renderProducts();renderCategories();renderImages();
 }
 function renderProducts(){const q=$('#productSearch').value.toLowerCase().trim();const list=model.products.filter(p=>(p.name+' '+p.description+' '+p.category).toLowerCase().includes(q));$('#productCountLabel').textContent=`${list.length} de ${model.products.length} productos`;
- $('#adminProducts').innerHTML=list.length?list.map(p=>`<article class="product-row"><img alt="" src="${html(p.image)}"><div class="prod-info"><b>${html(p.name)}</b><small>${html(model.categories.find(x=>x[0]===p.category)?.[1]||p.category)} · ${p.visible===false?'Oculto':'Visible'}</small><span class="chip ${p.stock===0?'out':p.stock<=3?'low':'good'}">${p.stock===0?'Agotado':p.stock+' unidades'}</span> ${p.featured?'<span class="chip">Destacado</span>':''}</div><strong class="price-col">${money(p.price)}</strong><div class="row row-actions"><button class="btn" data-edit="${p.id}">Editar</button><button class="btn icon" title="Duplicar" data-duplicate="${p.id}">⧉</button><button class="btn icon danger" title="Eliminar" data-delete="${p.id}">✕</button></div></article>`).join(''):'<div class="card"><p>No hay productos con esa búsqueda.</p></div>';
+ $('#adminProducts').innerHTML=list.length?list.map(p=>`<article class="product-row"><img alt="" src="${html(p.image||'assets/watch.svg')}" loading="lazy" decoding="async" width="72" height="72"><div class="prod-info"><b>${html(p.name)}</b><small>${html(model.categories.find(x=>x[0]===p.category)?.[1]||p.category)} · ${p.visible===false?'Oculto':'Visible'}</small><span class="chip ${p.stock===0?'out':p.stock<=3?'low':'good'}">${p.stock===0?'Agotado':p.stock+' unidades'}</span> ${p.featured?'<span class="chip">Destacado</span>':''}</div><strong class="price-col">${money(p.price)}</strong><div class="row row-actions"><button class="btn" data-edit="${p.id}">Editar</button><button class="btn icon" title="Duplicar" data-duplicate="${p.id}">⧉</button><button class="btn icon danger" title="Eliminar" data-delete="${p.id}">✕</button></div></article>`).join(''):'<div class="card"><p>No hay productos con esa búsqueda.</p></div>';
 }
 function renderCategories(){const list=model.categories.slice(1);$('#categoryList').innerHTML=list.map(([id,label])=>{const n=model.products.filter(p=>p.category===id).length;return `<div class="category-row"><div><strong>${html(label)}</strong><br><small>${html(id)} · ${n} producto(s)</small></div><div class="row"><input data-cat-name="${id}" value="${html(label)}" aria-label="Nombre de ${html(label)}"><button class="btn danger" data-cat-delete="${id}" ${n?'disabled':''}>Eliminar</button></div></div>`}).join('')||'<p>No hay categorías.</p>'}
 function renderImages(){for(const [el,key] of [['#heroPreview','heroImage'],['#logoPreview','logoImage']]){const target=$(el);target.innerHTML=model.site[key]?`<img src="${html(model.site[key])}" alt="Vista previa">`:'<span class="muted">Sin imagen personalizada</span>'}}
@@ -180,11 +180,34 @@ function saveProduct(event){event.preventDefault();const price=Number($('#pPrice
 }
 function slug(text){return text.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,36)}
 function addCategory(){const label=$('#newCategory').value.trim();if(!label){notification('Escribe una categoría.',true);return}let id=slug(label);if(!id){notification('Nombre inválido.',true);return}if(model.categories.some(c=>c[0]===id)){notification('Esta categoría ya existe.',true);return}model.categories.push([id,label]);$('#newCategory').value='';markDirty();renderCategories();notification('Categoría creada en borrador.')}
-async function toBase64(file){if(!file||!file.type.startsWith('image/'))throw Error('Selecciona una imagen válida.');if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Solo JPG, PNG o WebP.');if(file.size>12*1024*1024)throw Error('La imagen original supera 12 MB.');
- const bmp=await createImageBitmap(file);const scale=Math.min(1,1100/Math.max(bmp.width,bmp.height));const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bmp.width*scale));canvas.height=Math.max(1,Math.round(bmp.height*scale));const ctx=canvas.getContext('2d');ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(bmp,0,0,canvas.width,canvas.height);bmp.close?.();
- let dataUrl='';for(const quality of [.82,.7,.55,.4]){dataUrl=canvas.toDataURL('image/webp',quality);if(dataUrl.length<850000)break}
- if(dataUrl.length>850000)throw Error('La imagen sigue siendo demasiado pesada. Reduce su tamaño.');return {mime:'image/webp',base64:dataUrl.split(',')[1]};
+async function toBase64(file){
+ if(!file||!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Selecciona una imagen JPG, PNG o WebP.');
+ if(file.size>12*1024*1024)throw Error('La imagen original supera 12 MB.');
+ const bmp=await createImageBitmap(file);
+ try{
+  let maxSide=1100, result=null;
+  for(let attempt=0;attempt<3;attempt++){
+   const scale=Math.min(1,maxSide/Math.max(bmp.width,bmp.height));
+   const canvas=document.createElement('canvas');
+   canvas.width=Math.max(1,Math.round(bmp.width*scale));
+   canvas.height=Math.max(1,Math.round(bmp.height*scale));
+   const ctx=canvas.getContext('2d',{alpha:false});
+   ctx.fillStyle='#ffffff';ctx.fillRect(0,0,canvas.width,canvas.height);
+   ctx.drawImage(bmp,0,0,canvas.width,canvas.height);
+   for(const quality of [.82,.68,.52,.36]){
+    result=await new Promise(resolve=>canvas.toBlob(resolve,'image/webp',quality));
+    if(result&&result.size<=625000)break;
+   }
+   canvas.width=canvas.height=0;
+   if(result&&result.size<=625000)break;
+   maxSide=Math.round(maxSide*.72);
+  }
+  if(!result||result.size>625000)throw Error('No pudimos comprimir la imagen. Prueba una foto más pequeña.');
+  const dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(Error('No se pudo leer la fotografía.'));r.readAsDataURL(result)});
+  return {mime:'image/webp',base64:dataUrl.split(',')[1]};
+ }finally{bmp.close?.()}
 }
+
 async function upload(file,target){if(!file)return;const el=target==='product'?$('#uploadProductBtn'):null;const old=el?.textContent;if(el){el.disabled=true;el.textContent='Subiendo...'}
  try{notification('Preparando imagen...');const data=await toBase64(file);const result=await api('upload',data);if(target==='product'){draftImage=result.url;renderProductImage()}else{model.site[target]=result.url;renderImages();markDirty()}notification('Imagen subida. Recuerda publicar los cambios.')}catch(e){notification(e.message,true)}finally{if(el){el.disabled=false;el.textContent=old}}}
 async function publish(){if(!model)return;const btn=$('#saveBtn');btn.disabled=true;btn.textContent='PUBLICANDO...';try{const r=await api('save',model);model=r.data;dirty=false;status('Publicado correctamente','saved');renderAll();notification('Cambios publicados. Los clientes ya pueden verlos.')}catch(e){notification(e.message,true)}finally{btn.disabled=false;btn.textContent='PUBLICAR CAMBIOS ↗'}}

@@ -5,8 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="JS NEXO — Relojes, gadgets y accesorios tecnológicos con carácter. Explora la colección y pide por WhatsApp.">
 <meta name="theme-color" content="#101113">
+<meta name="color-scheme" content="dark light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_DO">
+<meta property="og:title" content="JS NEXO® — Relojes y tecnología con identidad">
+<meta property="og:description" content="Relojes, gadgets y accesorios tecnológicos. Descubre el catálogo y pide directamente por WhatsApp.">
+<meta name="twitter:card" content="summary">
 <title>JS NEXO® — El estilo es una elección.</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/watch.svg" as="image" type="image/svg+xml">
 <style>
 /* ══════════════════════════════════════════════════════════════════
    JS NEXO / ATELIER 01  ·  Single-file site · Edit product data below
@@ -55,6 +62,19 @@ html[data-motion="off"] *,html[data-performance="lite"] *{animation:none!importa
 #siteBanner{font-size:10px;letter-spacing:.12em;text-transform:uppercase;border-bottom:1px solid var(--line);background:var(--paper);padding:10px 18px;text-align:center;color:var(--muted);font-weight:800}
 #siteBanner[hidden]{display:none}
 #shop .product-art img{object-fit:contain}
+
+/* JS NEXO V2 · Optimización de móvil, repintado y accesibilidad. */
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.ticker-track,.float-prod,.hero-showcase,.screen.enter{animation:none!important;transition:none!important}}
+@media(hover:none){.product-card:hover .product-art,.product-card:hover .product-art img,.depth-btn:hover{transform:none!important}}
+.product-card{content-visibility:auto;contain-intrinsic-size:auto 470px}
+.product-art{contain:layout paint}
+.product-art img{content-visibility:auto}
+body{overscroll-behavior-x:none}
+/* En pantallas pequeñas, reduce efectos costosos sin perder el diseño. */
+@media(max-width:720px){.ambient:after{display:none}.hero-showcase{box-shadow:0 12px 32px var(--shade)}.product-card{contain-intrinsic-size:auto 420px}}
+html[data-performance="lite"] .ambient:after{display:none!important}
+html[data-performance="lite"] .product-art img{filter:none!important}
+@media(prefers-reduced-transparency:reduce){.nav-tabs,.sheet,.site-header{backdrop-filter:none!important}}
 </style>
 </head>
 <body>
@@ -77,9 +97,9 @@ html[data-motion="off"] *,html[data-performance="lite"] *{animation:none!importa
         <div class="hero-bottom"><div class="signal"><span class="signal-ring"></span><span class="micro">ESTILO CON<br>IDENTIDAD</span></div><span class="micro muted">INDEPENDIENTE<br> SANTO DOMINGO ↗</span></div>
       </div>
       <div class="hero-showcase" id="heroShowcase" aria-label="Composición conceptual de relojes y accesorios"><div class="showcase-grid"></div><div class="showcase-halo"></div><span class="showcase-letter">JS</span><span class="showcase-sticker">THE NEXO EDITION ✳</span>
-        <div class="float-prod float-main"><img src="assets/watch.svg" alt="Ilustración de reloj de pulsera JS NEXO" fetchpriority="high"></div>
-        <div class="float-prod float-small"><img src="assets/smart.svg" alt="Ilustración de reloj inteligente"></div>
-        <div class="float-prod float-third"><img src="assets/earbuds.svg" alt="Ilustración de audífonos inalámbricos"></div>
+        <div class="float-prod float-main"><img alt="Ilustración de reloj de pulsera JS NEXO" fetchpriority="high" decoding="async" width="420" height="420" src="assets/watch.svg"></div>
+        <div class="float-prod float-small"><img alt="Ilustración de reloj inteligente" loading="lazy" decoding="async" width="260" height="260" src="assets/smart.svg"></div>
+        <div class="float-prod float-third"><img alt="Ilustración de audífonos inalámbricos" loading="lazy" decoding="async" width="260" height="260" src="assets/earbuds.svg"></div>
         <div class="showcase-caption">FORM / FUNCTION / IDENTITY<br><span class="text-accent">JS NEXO — SANTO DOMINGO</span></div>
       </div>
     </div>
@@ -125,7 +145,10 @@ let PRODUCTS=[
 let CATEGORIES=[['all','Todas'],['relojes','Relojes'],['smart','Smartwatches'],['audio','Audio'],['accesorios','Accesorios']];
 const THEMES=[['obsidian','Obsidiana','#101113','#d5ff6c','#f5f5f0'],['paper','Papel','#f0eee8','#2747ee','#151915'],['galaxy','Galaxia','#0c0a1e','#c7a6ff','#f9f6ff'],['arctic','Ártico','#edf7ff','#0074da','#123047'],['forest','Bosque','#0c1912','#b8ff86','#f1f8e8'],['sakura','Sakura','#fff1f6','#b71d6d','#371f2e'],['ocean','Océano','#071a25','#60eaff','#eafaff'],['sunset','Atardecer','#24131b','#ffba78','#fff1eb'],['mono','Mono','#f3f3f3','#202020','#171717'],['cyber','Cyber','#170e23','#ff66df','#fff1ff'],['sand','Arena','#f7f0e2','#a5581c','#332719'],['crimson','Crimson','#1d0c11','#ff647d','#fff1f1']];
 const escapeHtml = v => String(v??'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-const $$=s=>Array.from(document.querySelectorAll(s));const $=s=>document.querySelector(s);const fmt=n=>new Intl.NumberFormat('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:0}).format(n).replace('DOP','RD$');
+const $$=s=>Array.from(document.querySelectorAll(s));const $=s=>document.querySelector(s);
+const priceFormatter=new Intl.NumberFormat('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:0});
+const fmt=n=>priceFormatter.format(n).replace('DOP','RD$');
+const imageFor=p=>p.image||({relojes:'assets/watch.svg',smart:'assets/smart.svg',audio:'assets/earbuds.svg',accesorios:'assets/charger.svg'}[p.category]||'assets/watch.svg');
 const stored=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}};
 const persist=(key,val)=>{try{localStorage.setItem(key,JSON.stringify(val))}catch(e){}};
 let prefs={theme:'obsidian',motion:true,tilt:true,lite:false,font:'1',...stored('js_nexo_atelier_prefs',{})};
@@ -138,17 +161,18 @@ function renderFilters(){$('#filters').innerHTML=CATEGORIES.map(([id,label])=>`<
 function getVisible(){let x=PRODUCTS.filter(p=>p.visible!==false).filter(p=>category==='all'||p.category===category).filter(p=>(p.name+' '+p.description).toLowerCase().includes(term.toLowerCase()));if(favoritesOnly)x=x.filter(p=>favs.has(p.id));if(sorting==='low')x.sort((a,b)=>a.price-b.price);if(sorting==='high')x.sort((a,b)=>b.price-a.price);if(sorting==='name')x.sort((a,b)=>a.name.localeCompare(b.name));return x}
 function catName(id){return CATEGORIES.find(x=>x[0]===id)?.[1]||id}
 function stockText(p){return p.stock===0?'Agotado':p.stock<=3?`Últimas ${p.stock} unidades`:`${p.stock} unidades disponibles`}
-function renderProducts(){let items=getVisible();$('#productCount').textContent=`${String(items.length).padStart(2,'0')} PIEZAS EN PANTALLA`;$('#favFilterBtn').style.color=favoritesOnly?'var(--accent)':'';$('#productGrid').innerHTML=items.length?items.map((p,i)=>`<article class="product-card"><div class="product-art"><span class="product-index">${String(i+1).padStart(2,'0')} / ${escapeHtml(catName(p.category).toUpperCase())}</span><button class="fav-btn" aria-label="${favs.has(p.id)?'Quitar de':'Añadir a'} favoritos" aria-pressed="${favs.has(p.id)}" data-fav="${p.id}" type="button">${favs.has(p.id)?'♥':'♡'}</button><img src="${p.image}" alt="${escapeHtml(p.name)}" loading="lazy"></div><div class="product-info"><div class="product-top"><h3>${escapeHtml(p.name)}</h3><b>${fmt(p.price)}</b></div><p class="product-sub">${escapeHtml(catName(p.category))}</p><p class="stock ${p.stock===0?'out':p.stock<=3?'low':''}">${siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p)}</p><div class="product-actions"><button class="depth-btn small" data-add="${p.id}" ${p.stock===0?'disabled':''}>AÑADIR ↗</button><button class="soft-btn" data-detail="${p.id}">VER MÁS</button></div></div></article>`).join(''):'<div class="empty-state" style="grid-column:1/-1">No encontramos piezas con esos filtros.<br>Prueba otra categoría o búsqueda.</div>'}
-function updateCart(){let next={};Object.entries(cart).forEach(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);if(p&&p.stock>0&&Number(q)>0)next[id]=Math.min(p.stock,Math.floor(Number(q)))});cart=next;persist('js_nexo_atelier_cart',cart);let count=Object.values(cart).reduce((s,q)=>s+q,0);$('#cartCount').textContent=count;let items=Object.entries(cart);$('#cartItems').innerHTML=items.length?items.map(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);return `<div class="cart-item"><img src="${p.image}" alt=""><div><h3>${escapeHtml(p.name)}</h3><p>${fmt(p.price)} por unidad</p><div class="qty"><button type="button" data-quantity="${id}" data-step="-1" aria-label="Reducir ${escapeHtml(p.name)}">−</button><span>${q}</span><button type="button" data-quantity="${id}" data-step="1" aria-label="Aumentar ${escapeHtml(p.name)}">+</button></div></div><div style="text-align:right"><b style="font-size:12px">${fmt(p.price*q)}</b><br><button type="button" class="remove" data-remove="${id}">Quitar</button></div></div>`}).join(''):'<div class="empty-state">Tu selección está vacía.<br>Explora la colección y agrega tus favoritos.</div>';$('#cartTotal').textContent=fmt(items.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===id).price*q,0));$('#sendOrder').disabled=!items.length}
+function renderProducts(){let items=getVisible();$('#productCount').textContent=`${String(items.length).padStart(2,'0')} PIEZAS EN PANTALLA`;$('#favFilterBtn').style.color=favoritesOnly?'var(--accent)':'';$('#productGrid').innerHTML=items.length?items.map((p,i)=>`<article class="product-card"><div class="product-art"><span class="product-index">${String(i+1).padStart(2,'0')} / ${escapeHtml(catName(p.category).toUpperCase())}</span><button class="fav-btn" aria-label="${favs.has(p.id)?'Quitar de':'Añadir a'} favoritos" aria-pressed="${favs.has(p.id)}" data-fav="${p.id}" type="button">${favs.has(p.id)?'♥':'♡'}</button><img src="${escapeHtml(imageFor(p))}" alt="${escapeHtml(p.name)}" loading="lazy" decoding="async" width="420" height="483"></div><div class="product-info"><div class="product-top"><h3>${escapeHtml(p.name)}</h3><b>${fmt(p.price)}</b></div><p class="product-sub">${escapeHtml(catName(p.category))}</p><p class="stock ${p.stock===0?'out':p.stock<=3?'low':''}">${siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p)}</p><div class="product-actions"><button class="depth-btn small" data-add="${p.id}" ${p.stock===0?'disabled':''}>AÑADIR ↗</button><button class="soft-btn" data-detail="${p.id}">VER MÁS</button></div></div></article>`).join(''):'<div class="empty-state" style="grid-column:1/-1">No encontramos piezas con esos filtros.<br>Prueba otra categoría o búsqueda.</div>'}
+function updateCart(){let next={};Object.entries(cart).forEach(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);if(p&&p.stock>0&&Number(q)>0)next[id]=Math.min(p.stock,Math.floor(Number(q)))});cart=next;persist('js_nexo_atelier_cart',cart);let count=Object.values(cart).reduce((s,q)=>s+q,0);$('#cartCount').textContent=count;let items=Object.entries(cart);$('#cartItems').innerHTML=items.length?items.map(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);return `<div class="cart-item"><img src="${escapeHtml(imageFor(p))}" alt="" loading="lazy" decoding="async" width="80" height="80"><div><h3>${escapeHtml(p.name)}</h3><p>${fmt(p.price)} por unidad</p><div class="qty"><button type="button" data-quantity="${id}" data-step="-1" aria-label="Reducir ${escapeHtml(p.name)}">−</button><span>${q}</span><button type="button" data-quantity="${id}" data-step="1" aria-label="Aumentar ${escapeHtml(p.name)}">+</button></div></div><div style="text-align:right"><b style="font-size:12px">${fmt(p.price*q)}</b><br><button type="button" class="remove" data-remove="${id}">Quitar</button></div></div>`}).join(''):'<div class="empty-state">Tu selección está vacía.<br>Explora la colección y agrega tus favoritos.</div>';$('#cartTotal').textContent=fmt(items.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===id).price*q,0));$('#sendOrder').disabled=!items.length}
 function addToCart(id){let p=PRODUCTS.find(p=>p.id===id);if(!p||p.stock===0){toast('Esta pieza figura como agotada.');return}if((cart[id]||0)>=p.stock){toast('Has alcanzado el stock indicado.');return}cart[id]=(cart[id]||0)+1;updateCart();toast('Añadido a tu selección ✓')}
 function changeQuantity(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];updateCart()}
 function order(){let entries=Object.entries(cart);if(!entries.length)return;let total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===id).price*q,0);let lines=['Hola JS NEXO, quiero consultar este pedido:','',...entries.map(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);return `• ${p.name} × ${q} — ${fmt(p.price*q)}`}),'',`Subtotal: ${fmt(total)}`,'','¿Me confirman disponibilidad, entrega y precio final?'];window.open(`https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener')}
-function openDetail(id){let p=PRODUCTS.find(p=>p.id===id);if(!p)return;activeDetail=id;$('#detailImage').src=p.image;$('#detailImage').alt=`Foto de ${p.name}`;$('#detailCategory').textContent=catName(p.category).toUpperCase();$('#detailTitle').textContent=p.name;$('#detailDescription').textContent=p.description;$('#detailPrice').textContent=fmt(p.price);$('#detailStock').textContent=siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p);$('#detailAdd').disabled=p.stock===0;openDialog('productDialog')}
+function openDetail(id){let p=PRODUCTS.find(p=>p.id===id);if(!p)return;activeDetail=id;$('#detailImage').src=imageFor(p);$('#detailImage').alt=`Foto de ${p.name}`;$('#detailCategory').textContent=catName(p.category).toUpperCase();$('#detailTitle').textContent=p.name;$('#detailDescription').textContent=p.description;$('#detailPrice').textContent=fmt(p.price);$('#detailStock').textContent=siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p);$('#detailAdd').disabled=p.stock===0;openDialog('productDialog')}
 function openDialog(id){if(dialogName)closeDialog(false);dialogName=id;previousFocus=document.activeElement;$('#scrim').hidden=false;$('#'+id).hidden=false;document.body.style.overflow='hidden';$('#'+id).querySelector('button')?.focus()}
 function closeDialog(restore=true){if(!dialogName)return;$('#'+dialogName).hidden=true;$('#scrim').hidden=true;dialogName=null;document.body.style.overflow='';if(restore)previousFocus?.focus()}
 function setup(){createThemes();applyPrefs();renderFilters();renderProducts();updateCart();$('#year').textContent=new Date().getFullYear();navigate(location.hash.slice(1)||'home',false);
  document.addEventListener('click',e=>{let r=e.target.closest('.route');if(r){e.preventDefault();closeDialog();navigate(r.dataset.page);return}let f=e.target.closest('[data-filter]');if(f){category=f.dataset.filter;renderFilters();renderProducts();return}let a=e.target.closest('[data-add]');if(a){addToCart(a.dataset.add);return}let d=e.target.closest('[data-detail]');if(d){openDetail(d.dataset.detail);return}let fav=e.target.closest('[data-fav]');if(fav){favs.has(fav.dataset.fav)?favs.delete(fav.dataset.fav):favs.add(fav.dataset.fav);persist('js_nexo_atelier_favs',[...favs]);renderProducts();return}let qty=e.target.closest('[data-quantity]');if(qty){changeQuantity(qty.dataset.quantity,Number(qty.dataset.step));return}let rm=e.target.closest('[data-remove]');if(rm){delete cart[rm.dataset.remove];updateCart();return}let t=e.target.closest('[data-theme-select]');if(t){prefs.theme=t.dataset.themeSelect;applyPrefs();return}if(e.target.closest('[data-close]')||e.target.id==='scrim')closeDialog()});
- $('#settingsBtn').addEventListener('click',()=>openDialog('settingsSheet'));$('#cartBtn').addEventListener('click',()=>openDialog('cartSheet'));$('#search').addEventListener('input',e=>{term=e.target.value;renderProducts()});$('#sort').addEventListener('change',e=>{sorting=e.target.value;renderProducts()});$('#favFilterBtn').addEventListener('click',()=>{favoritesOnly=!favoritesOnly;renderProducts()});$('#sendOrder').addEventListener('click',order);$('#detailAdd').addEventListener('click',()=>{addToCart(activeDetail);closeDialog()});$('#detailBuy').addEventListener('click',()=>{addToCart(activeDetail);closeDialog();openDialog('cartSheet')});
+ $('#settingsBtn').addEventListener('click',()=>openDialog('settingsSheet'));$('#cartBtn').addEventListener('click',()=>openDialog('cartSheet'));let searchFrame=0;
+ $('#search').addEventListener('input',e=>{term=e.target.value;cancelAnimationFrame(searchFrame);searchFrame=requestAnimationFrame(renderProducts)});$('#sort').addEventListener('change',e=>{sorting=e.target.value;renderProducts()});$('#favFilterBtn').addEventListener('click',()=>{favoritesOnly=!favoritesOnly;renderProducts()});$('#sendOrder').addEventListener('click',order);$('#detailAdd').addEventListener('click',()=>{addToCart(activeDetail);closeDialog()});$('#detailBuy').addEventListener('click',()=>{addToCart(activeDetail);closeDialog();openDialog('cartSheet')});
  $('#motionToggle').addEventListener('change',e=>{prefs.motion=e.target.checked;applyPrefs()});$('#tiltToggle').addEventListener('change',e=>{prefs.tilt=e.target.checked;applyPrefs()});$('#liteToggle').addEventListener('change',e=>{prefs.lite=e.target.checked;applyPrefs()});$('#fontScale').addEventListener('change',e=>{prefs.font=e.target.value;applyPrefs()});$('#clearPrefs').addEventListener('click',()=>{cart={};favs.clear();updateCart();renderProducts();toast('Carrito y favoritos vaciados.')});window.addEventListener('popstate',()=>navigate(location.hash.slice(1)||'home',false));window.addEventListener('hashchange',()=>navigate(location.hash.slice(1)||'home',false));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDialog();if(e.key==='Tab'&&dialogName){let elements=$$('#'+dialogName+' button:not([disabled]),#'+dialogName+' input:not([disabled]),#'+dialogName+' select:not([disabled])').filter(el=>el.offsetWidth||el.offsetHeight);let first=elements[0],last=elements[elements.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}}});
 }
 // ── Catálogo administrado por Netlify (sin contraseñas en esta página).
@@ -188,7 +212,7 @@ function hydrateSite(data){
    notice.textContent='CATÁLOGO DE DEMOSTRACIÓN · Configura y publica tus productos reales desde el panel administrativo.';
  }
  const banner=$('#siteBanner');banner.hidden=!s.showBanner||!s.banner;banner.textContent=s.banner||'';
- if(s.logoImage){let mark=$('.brand-mark');mark.textContent='';const im=document.createElement('img');im.src=s.logoImage;im.alt='Logotipo de '+STORE.name;mark.append(im)}
+ {const mark=$('.brand-mark');mark.replaceChildren();if(s.logoImage){const im=document.createElement('img');im.src=s.logoImage;im.alt='Logotipo de '+STORE.name;im.decoding='async';mark.append(im)}else{mark.textContent='JS'}}
  const imgs=$$('.float-prod img');
  if(s.heroImage){if(imgs[0]){imgs[0].src=s.heroImage;imgs[0].alt='Imagen principal de '+STORE.name}}
  else {const featured=PRODUCTS.filter(p=>p.featured);featured.forEach((p,i)=>{if(imgs[i])imgs[i].src=p.image})}
@@ -198,19 +222,44 @@ function hydrateSite(data){
  if(tiktokCard){setText('#contact .contact-card:last-child small',STORE.tiktok?'@'+STORE.tiktok:'ENLACE PENDIENTE');
    if(STORE.tiktok){const link=document.createElement('a');link.className='contact-card';link.href=`https://www.tiktok.com/@${STORE.tiktok}`;link.target='_blank';link.rel='noopener';link.innerHTML=tiktokCard.innerHTML;tiktokCard.replaceWith(link)}
  }
- if(!localStorage.getItem('js_nexo_atelier_prefs') && s.defaultTheme){prefs.theme=s.defaultTheme;applyPrefs()}
- category='all';renderFilters();renderProducts();updateCart();
+ if(!stored('js_nexo_atelier_prefs',null) && s.defaultTheme){prefs.theme=s.defaultTheme;applyPrefs()}
+ if(!CATEGORIES.some(([id])=>id===category))category='all';renderFilters();renderProducts();updateCart();
+}
+/* La última versión publicada aparece de inmediato en visitas repetidas,
+   mientras comprobamos en segundo plano si el administrador la actualizó. */
+const PUBLIC_CACHE_KEY='js_nexo_published_catalog_v2';
+let publicRequest=null, lastPublicFetch=0;
+function restorePublicCache(){
+ try{const saved=JSON.parse(sessionStorage.getItem(PUBLIC_CACHE_KEY)||'null');
+  if(saved&&saved.savedAt>Date.now()-6*60*60*1000&&saved.data?.site&&saved.data?.published){hydrateSite(saved.data);return true}
+ }catch{}return false;
 }
 async function refreshPublic(){
- try{
-   if(location.protocol==='file:')return;
-   const r=await fetch('/.netlify/functions/api?action=public',{cache:'no-store'});
-   if(!r.ok)throw Error('API sin conexión');
-   hydrateSite(await r.json());
- }catch(e){console.info('JS NEXO: demostración local; el catálogo online necesita desplegar Netlify Functions.',e.message)}
+ if(location.protocol==='file:'||publicRequest)return publicRequest;
+ const controller=new AbortController();
+ const timeout=setTimeout(()=>controller.abort(),12000);
+ const request=(async()=>{
+  try{
+   const r=await fetch('/.netlify/functions/api?action=public',{cache:'no-store',signal:controller.signal});
+   if(!r.ok)throw Error('Catálogo temporalmente no disponible');
+   const data=await r.json();
+   hydrateSite(data);
+   lastPublicFetch=Date.now();
+   try{if(data?.published)sessionStorage.setItem(PUBLIC_CACHE_KEY,JSON.stringify({savedAt:Date.now(),data}));else sessionStorage.removeItem(PUBLIC_CACHE_KEY)}catch{}
+  }catch(e){
+   if(navigator.onLine===false&&siteData?.published){toast('Sin conexión: se muestra el último catálogo descargado. Verifica precios y stock por WhatsApp.')}
+   console.info('JS NEXO: no se pudo actualizar el catálogo online.',e.message);
+  }finally{clearTimeout(timeout)}
+ })();
+ publicRequest=request;
+ try{return await request}finally{publicRequest=null}
 }
 
 setup();
+restorePublicCache();
 refreshPublic();
+window.addEventListener('pageshow',e=>{if(e.persisted&&Date.now()-lastPublicFetch>20000)refreshPublic()});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&Date.now()-lastPublicFetch>45000)refreshPublic()});
+
 </script>
 </body></html>

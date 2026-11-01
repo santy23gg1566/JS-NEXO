@@ -104,17 +104,33 @@ export default async function handler(req,context){
   try{
     if(req.method==='GET'&&action==='public'){
       const data=await catalogStore().get('catalog',{type:'json'});
-      return html(data||SEED);
+      return html(data||SEED,200,{
+        'Netlify-CDN-Cache-Control':'public, durable, max-age=10',
+        'Netlify-Vary':'query=action'
+      });
     }
     if(req.method==='GET'&&action==='image'){
       const id=u.searchParams.get('id')||'';
       if(!/^[0-9a-f-]{36}$/.test(id))return failure('Imagen inválida.',404);
-      const asset=await photoStore().get(`photo-${id}`,{type:'json'});
-      if(!asset)return failure('Imagen no encontrada.',404);
-      const buf=Buffer.from(asset.data,'base64');
-      return new Response(buf,{status:200,headers:{'Content-Type':asset.mime,'Cache-Control':'public, max-age=86400, immutable','X-Content-Type-Options':'nosniff'}});
+      // Formato binario nuevo: menos bytes y menos CPU. Compatible con fotos JSON antiguas.
+      const entry=await photoStore().getWithMetadata(`photo-${id}`,{type:'arrayBuffer'});
+      if(!entry)return failure('Imagen no encontrada.',404);
+      let buf=Buffer.from(entry.data),mime=entry.metadata?.mime;
+      if(!mime){
+        const legacy=JSON.parse(buf.toString('utf8'));
+        mime=legacy.mime;
+        buf=Buffer.from(legacy.data,'base64');
+      }
+      if(!['image/png','image/jpeg','image/webp'].includes(mime))return failure('Imagen inválida.',404);
+      return new Response(buf,{status:200,headers:{
+        'Content-Type':mime,'Cache-Control':'public, max-age=31536000, immutable',
+        'Netlify-CDN-Cache-Control':'public, durable, max-age=31536000, immutable',
+        'Netlify-Vary':'query=action|id',
+        'X-Content-Type-Options':'nosniff'
+      }});
     }
-    if(req.method==='GET'&&action==='me')return html({ok:true,authenticated:authenticated(req),configured:configReady});
+    if(req.method==='GET'&&action==='me')return html({ok:true,authenticated:authenticated(req),configured:configReady,
+      setupHint:configReady?null:(password().length<12&&secret().length<32?'both':password().length<12?'password':'secret')});
     if(req.method==='POST'&&action==='login'){
       if(!originOK(req))return failure('Origen no permitido.',403);
       if(!configReady)return failure('Primero configura JS_ADMIN_PASSWORD (12+ caracteres) y JS_ADMIN_SECRET (32+ caracteres) en Netlify.',503);
@@ -158,7 +174,8 @@ export default async function handler(req,context){
       const buf=Buffer.from(b64,'base64');
       if(buf.length>650000||!validImageBytes(buf,mime))return failure('Imagen inválida. Máximo 650 KB por foto.',400);
       const id=randomUUID();
-      await photoStore().setJSON(`photo-${id}`,{mime,data:buf.toString('base64')});
+      // Guardar bytes reales, no base64 en JSON (ahorra ~25% del almacenamiento).
+      await photoStore().set(`photo-${id}`,buf.buffer.slice(buf.byteOffset,buf.byteOffset+buf.byteLength),{metadata:{mime}});
       return html({ok:true,url:`/.netlify/functions/api?action=image&id=${id}`});
     }
     return failure('Ruta no disponible.',404);
