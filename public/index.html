@@ -126,28 +126,140 @@ html[data-performance="lite"] .product-art img{filter:none!important}
 <script>
 "use strict";
 /* ═══ EDITAR LA TIENDA ═══
-   Los siguientes productos, precios y cantidades son DEMOSTRATIVOS.
-   Cámbialos por tu inventario real antes de vender.
+   Los relojes de la colección son los diez flyers enviados para JS NEXO.
+   Los precios y cantidades quedan por confirmar en el panel.
    Para poner fotos reales, escribe image:"assets/mi-foto.webp".
    WhatsApp de pedidos ya configurado: 849-503-8748.
 */
-let STORE={name:'JS NEXO',whatsapp:'18495038748',instagram:'jsnexo',tiktok:''};
+let STORE={name:'JS NEXO',whatsapp:'18495038748',instagram:'js_hermanos.simo',tiktok:''};
 let PRODUCTS=[
- {id:'js01',name:'Noir Classic',category:'relojes',price:990,stock:7,image:'assets/watch.svg',description:'Reloj analógico de estética sobria, ideal para complementar tu estilo.'},
- {id:'js02',name:'Silver Edition',category:'relojes',price:1190,stock:4,image:'assets/watch.svg',description:'Una interpretación minimalista del reloj clásico con acabado plateado.'},
- {id:'js03',name:'Pulse Smart',category:'smart',price:1890,stock:5,image:'assets/smart.svg',description:'Reloj inteligente de diseño compacto y estética contemporánea.'},
- {id:'js04',name:'Active Motion',category:'smart',price:2150,stock:2,image:'assets/smart.svg',description:'Smartwatch conceptual para quienes buscan un look tecnológico.'},
- {id:'js05',name:'Air Mini',category:'audio',price:850,stock:10,image:'assets/earbuds.svg',description:'Audífonos inalámbricos pequeños con estuche de transporte.'},
- {id:'js06',name:'Studio Headset',category:'audio',price:1590,stock:6,image:'assets/headphones.svg',description:'Audífonos de diadema con una silueta limpia y moderna.'},
- {id:'js07',name:'Power Cube',category:'accesorios',price:490,stock:9,image:'assets/charger.svg',description:'Cargador compacto de estilo minimalista para uso diario.'},
- {id:'js08',name:'Desk Stand',category:'accesorios',price:390,stock:0,image:'assets/stand.svg',description:'Soporte de escritorio para colocar el teléfono cómodamente.'}
+ {
+  "id": "nexo-reloj-01",
+  "name": "MAGIC Silver Orbit",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-01.webp",
+  "description": "Brazalete de acero plateado y esfera negra con marcadores elegantes. Su diseño sobrio combina con looks casuales y formales.",
+  "featured": true,
+  "visible": true,
+  "badge": "Nuevo"
+ },
+ {
+  "id": "nexo-reloj-02",
+  "name": "MAGIC Roman Steel",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-02.webp",
+  "description": "Reloj de brazalete metálico con esfera negra y números romanos. Un clásico refinado con presencia discreta.",
+  "featured": true,
+  "visible": true,
+  "badge": "Nuevo"
+ },
+ {
+  "id": "nexo-reloj-03",
+  "name": "MAGIC Urban Blue",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-03.webp",
+  "description": "Acabado plateado y esfera azul grafito con numerales destacados. De estética moderna, limpia y versátil.",
+  "featured": false,
+  "visible": true,
+  "badge": "Nuevo"
+ },
+ {
+  "id": "nexo-reloj-04",
+  "name": "MAGIC Chrono Noir",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-04.webp",
+  "description": "Brazalete de acero y esfera negra con subesferas de inspiración cronógrafo. Un estilo ejecutivo de carácter deportivo.",
+  "featured": false,
+  "visible": true,
+  "badge": ""
+ },
+ {
+  "id": "nexo-reloj-05",
+  "name": "MAGIC Blue Arc",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-05.webp",
+  "description": "Reloj metálico plateado con esfera negra y detalles azules en forma de arco. Un toque contemporáneo y distintivo.",
+  "featured": false,
+  "visible": true,
+  "badge": ""
+ },
+ {
+  "id": "nexo-reloj-06",
+  "name": "SPIRIT Silver Chrono",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-06.webp",
+  "description": "Brazalete de acero brillante y esfera blanca con detalles finos y subesferas. Ideal para quienes prefieren un estilo luminoso y sofisticado.",
+  "featured": false,
+  "visible": true,
+  "badge": ""
+ },
+ {
+  "id": "nexo-reloj-07",
+  "name": "Racing Ivory Orange",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-07.webp",
+  "description": "Correa negra deportiva y esfera blanca con detalles naranjas. Un diseño enérgico que resalta sin perder elegancia.",
+  "featured": true,
+  "visible": true,
+  "badge": ""
+ },
+ {
+  "id": "nexo-reloj-08",
+  "name": "Racing Carbon Orange",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-08.webp",
+  "description": "Correa de silicona negra, esfera oscura y marcadores naranjas. Inspiración automovilística para un look potente.",
+  "featured": false,
+  "visible": true,
+  "badge": ""
+ },
+ {
+  "id": "nexo-reloj-09",
+  "name": "Racing Red Carbon",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-09.webp",
+  "description": "Correa negra texturizada con costuras rojas y esfera de estilo deportivo. Una combinación atrevida con mucha personalidad.",
+  "featured": false,
+  "visible": true,
+  "badge": ""
+ },
+ {
+  "id": "nexo-reloj-10",
+  "name": "Racing Graphite Red",
+  "category": "relojes",
+  "price": null,
+  "stock": null,
+  "image": "assets/reloj-10.webp",
+  "description": "Reloj negro de correa perforada con esfera gris y acentos rojos. Estética racing y contraste moderno.",
+  "featured": false,
+  "visible": true,
+  "badge": ""
+ }
 ];
 let CATEGORIES=[['all','Todas'],['relojes','Relojes'],['smart','Smartwatches'],['audio','Audio'],['accesorios','Accesorios']];
 const THEMES=[['obsidian','Obsidiana','#101113','#d5ff6c','#f5f5f0'],['paper','Papel','#f0eee8','#2747ee','#151915'],['galaxy','Galaxia','#0c0a1e','#c7a6ff','#f9f6ff'],['arctic','Ártico','#edf7ff','#0074da','#123047'],['forest','Bosque','#0c1912','#b8ff86','#f1f8e8'],['sakura','Sakura','#fff1f6','#b71d6d','#371f2e'],['ocean','Océano','#071a25','#60eaff','#eafaff'],['sunset','Atardecer','#24131b','#ffba78','#fff1eb'],['mono','Mono','#f3f3f3','#202020','#171717'],['cyber','Cyber','#170e23','#ff66df','#fff1ff'],['sand','Arena','#f7f0e2','#a5581c','#332719'],['crimson','Crimson','#1d0c11','#ff647d','#fff1f1']];
 const escapeHtml = v => String(v??'').replace(/[&<>"']/g, ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const $$=s=>Array.from(document.querySelectorAll(s));const $=s=>document.querySelector(s);
 const priceFormatter=new Intl.NumberFormat('es-DO',{style:'currency',currency:'DOP',maximumFractionDigits:0});
-const fmt=n=>priceFormatter.format(n).replace('DOP','RD$');
+const fmt=n=>n==null?'Consultar precio':priceFormatter.format(n).replace('DOP','RD$');
 const imageFor=p=>p.image||({relojes:'assets/watch.svg',smart:'assets/smart.svg',audio:'assets/earbuds.svg',accesorios:'assets/charger.svg'}[p.category]||'assets/watch.svg');
 const stored=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}};
 const persist=(key,val)=>{try{localStorage.setItem(key,JSON.stringify(val))}catch(e){}};
@@ -158,14 +270,36 @@ function applyPrefs(){let r=document.documentElement;r.dataset.theme=prefs.theme
 function createThemes(){$('#themeGrid').innerHTML=THEMES.map(t=>`<button type="button" class="theme-tile" data-theme-select="${t[0]}" aria-pressed="false"><div class="theme-preview" style="--tbg:${t[2]};--taccent:${t[3]};--tink:${t[4]}"></div><span>${t[1]}</span></button>`).join('')}
 function navigate(page,updateHash=true){if(!$('#'+page)||!['home','shop','about','contact'].includes(page))page='home';$$('.screen').forEach(s=>{s.hidden=s.id!==page;s.classList.remove('enter');if(s.id===page){void s.offsetWidth;s.classList.add('enter')}});$$('.route').forEach(a=>{if(a.dataset.page===page)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(updateHash&&location.hash!==`#${page}`)history.pushState(null,'',`#${page}`);window.scrollTo({top:0,behavior:'instant'})}
 function renderFilters(){$('#filters').innerHTML=CATEGORIES.map(([id,label])=>`<button class="filter" type="button" data-filter="${id}" aria-pressed="${id===category}">${escapeHtml(label)}</button>`).join('')}
-function getVisible(){let x=PRODUCTS.filter(p=>p.visible!==false).filter(p=>category==='all'||p.category===category).filter(p=>(p.name+' '+p.description).toLowerCase().includes(term.toLowerCase()));if(favoritesOnly)x=x.filter(p=>favs.has(p.id));if(sorting==='low')x.sort((a,b)=>a.price-b.price);if(sorting==='high')x.sort((a,b)=>b.price-a.price);if(sorting==='name')x.sort((a,b)=>a.name.localeCompare(b.name));return x}
+function getVisible(){let x=PRODUCTS.filter(p=>p.visible!==false).filter(p=>category==='all'||p.category===category).filter(p=>(p.name+' '+p.description).toLowerCase().includes(term.toLowerCase()));if(favoritesOnly)x=x.filter(p=>favs.has(p.id));if(sorting==='low')x.sort((a,b)=>(a.price??Infinity)-(b.price??Infinity));if(sorting==='high')x.sort((a,b)=>(b.price??-Infinity)-(a.price??-Infinity));if(sorting==='name')x.sort((a,b)=>a.name.localeCompare(b.name));return x}
 function catName(id){return CATEGORIES.find(x=>x[0]===id)?.[1]||id}
-function stockText(p){return p.stock===0?'Agotado':p.stock<=3?`Últimas ${p.stock} unidades`:`${p.stock} unidades disponibles`}
-function renderProducts(){let items=getVisible();$('#productCount').textContent=`${String(items.length).padStart(2,'0')} PIEZAS EN PANTALLA`;$('#favFilterBtn').style.color=favoritesOnly?'var(--accent)':'';$('#productGrid').innerHTML=items.length?items.map((p,i)=>`<article class="product-card"><div class="product-art"><span class="product-index">${String(i+1).padStart(2,'0')} / ${escapeHtml(catName(p.category).toUpperCase())}</span><button class="fav-btn" aria-label="${favs.has(p.id)?'Quitar de':'Añadir a'} favoritos" aria-pressed="${favs.has(p.id)}" data-fav="${p.id}" type="button">${favs.has(p.id)?'♥':'♡'}</button><img src="${escapeHtml(imageFor(p))}" alt="${escapeHtml(p.name)}" loading="lazy" decoding="async" width="420" height="483"></div><div class="product-info"><div class="product-top"><h3>${escapeHtml(p.name)}</h3><b>${fmt(p.price)}</b></div><p class="product-sub">${escapeHtml(catName(p.category))}</p><p class="stock ${p.stock===0?'out':p.stock<=3?'low':''}">${siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p)}</p><div class="product-actions"><button class="depth-btn small" data-add="${p.id}" ${p.stock===0?'disabled':''}>AÑADIR ↗</button><button class="soft-btn" data-detail="${p.id}">VER MÁS</button></div></div></article>`).join(''):'<div class="empty-state" style="grid-column:1/-1">No encontramos piezas con esos filtros.<br>Prueba otra categoría o búsqueda.</div>'}
-function updateCart(){let next={};Object.entries(cart).forEach(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);if(p&&p.stock>0&&Number(q)>0)next[id]=Math.min(p.stock,Math.floor(Number(q)))});cart=next;persist('js_nexo_atelier_cart',cart);let count=Object.values(cart).reduce((s,q)=>s+q,0);$('#cartCount').textContent=count;let items=Object.entries(cart);$('#cartItems').innerHTML=items.length?items.map(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);return `<div class="cart-item"><img src="${escapeHtml(imageFor(p))}" alt="" loading="lazy" decoding="async" width="80" height="80"><div><h3>${escapeHtml(p.name)}</h3><p>${fmt(p.price)} por unidad</p><div class="qty"><button type="button" data-quantity="${id}" data-step="-1" aria-label="Reducir ${escapeHtml(p.name)}">−</button><span>${q}</span><button type="button" data-quantity="${id}" data-step="1" aria-label="Aumentar ${escapeHtml(p.name)}">+</button></div></div><div style="text-align:right"><b style="font-size:12px">${fmt(p.price*q)}</b><br><button type="button" class="remove" data-remove="${id}">Quitar</button></div></div>`}).join(''):'<div class="empty-state">Tu selección está vacía.<br>Explora la colección y agrega tus favoritos.</div>';$('#cartTotal').textContent=fmt(items.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===id).price*q,0));$('#sendOrder').disabled=!items.length}
-function addToCart(id){let p=PRODUCTS.find(p=>p.id===id);if(!p||p.stock===0){toast('Esta pieza figura como agotada.');return}if((cart[id]||0)>=p.stock){toast('Has alcanzado el stock indicado.');return}cart[id]=(cart[id]||0)+1;updateCart();toast('Añadido a tu selección ✓')}
+function stockText(p){return p.stock==null?'Consultar disponibilidad':p.stock===0?'Agotado':p.stock<=3?`Últimas ${p.stock} unidades`:`${p.stock} unidades disponibles`}
+function renderProducts(){let items=getVisible();$('#productCount').textContent=`${String(items.length).padStart(2,'0')} PIEZAS EN PANTALLA`;$('#favFilterBtn').style.color=favoritesOnly?'var(--accent)':'';$('#productGrid').innerHTML=items.length?items.map((p,i)=>`<article class="product-card"><div class="product-art"><span class="product-index">${String(i+1).padStart(2,'0')} / ${escapeHtml(catName(p.category).toUpperCase())}</span><button class="fav-btn" aria-label="${favs.has(p.id)?'Quitar de':'Añadir a'} favoritos" aria-pressed="${favs.has(p.id)}" data-fav="${p.id}" type="button">${favs.has(p.id)?'♥':'♡'}</button><img src="${escapeHtml(imageFor(p))}" alt="${escapeHtml(p.name)}" loading="lazy" decoding="async" width="420" height="483"></div><div class="product-info"><div class="product-top"><h3>${escapeHtml(p.name)}</h3><b>${fmt(p.price)}</b></div><p class="product-sub">${escapeHtml(catName(p.category))}</p><p class="stock ${p.stock===0?'out':p.stock!=null&&p.stock<=3?'low':''}">${siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p)}</p><div class="product-actions"><button class="depth-btn small" data-add="${p.id}" ${p.stock===0?'disabled':''}>AÑADIR ↗</button><button class="soft-btn" data-detail="${p.id}">VER MÁS</button></div></div></article>`).join(''):'<div class="empty-state" style="grid-column:1/-1">No encontramos piezas con esos filtros.<br>Prueba otra categoría o búsqueda.</div>'}
+function updateCart(){
+ let next={};Object.entries(cart).forEach(([id,q])=>{
+  let p=PRODUCTS.find(p=>p.id===id);
+  if(p&&p.stock!==0&&Number(q)>0)next[id]=Math.min(p.stock==null?99:p.stock,Math.floor(Number(q)));
+ });
+ cart=next;persist('js_nexo_atelier_cart',cart);
+ const count=Object.values(cart).reduce((s,q)=>s+q,0);$('#cartCount').textContent=count;
+ const items=Object.entries(cart);let hasUnknown=items.some(([id])=>PRODUCTS.find(p=>p.id===id).price==null);
+ $('#cartItems').innerHTML=items.length?items.map(([id,q])=>{
+  const p=PRODUCTS.find(p=>p.id===id);return `<div class="cart-item"><img src="${escapeHtml(imageFor(p))}" alt="" loading="lazy" decoding="async" width="80" height="80"><div><h3>${escapeHtml(p.name)}</h3><p>${fmt(p.price)} por unidad</p><div class="qty"><button type="button" data-quantity="${id}" data-step="-1" aria-label="Reducir ${escapeHtml(p.name)}">−</button><span>${q}</span><button type="button" data-quantity="${id}" data-step="1" aria-label="Aumentar ${escapeHtml(p.name)}">+</button></div></div><div style="text-align:right"><b style="font-size:12px">${p.price==null?'A consultar':fmt(p.price*q)}</b><br><button type="button" class="remove" data-remove="${id}">Quitar</button></div></div>`
+ }).join(''):'<div class="empty-state">Tu selección está vacía.<br>Explora la colección y agrega tus favoritos.</div>';
+ const knownTotal=items.reduce((s,[id,q])=>s+(PRODUCTS.find(p=>p.id===id).price??0)*q,0);
+ $('#cartTotal').textContent=hasUnknown?(knownTotal>0?fmt(knownTotal)+' + por consultar':'Precio por consultar'):fmt(knownTotal);
+ $('#sendOrder').disabled=!items.length;
+}
+function addToCart(id){let p=PRODUCTS.find(p=>p.id===id);if(!p||p.stock===0){toast('Esta pieza figura como agotada.');return}if(p.stock!=null&&(cart[id]||0)>=p.stock){toast('Has alcanzado el stock indicado.');return}cart[id]=(cart[id]||0)+1;updateCart();toast('Añadido a tu selección ✓')}
 function changeQuantity(id,delta){cart[id]=(cart[id]||0)+delta;if(cart[id]<=0)delete cart[id];updateCart()}
-function order(){let entries=Object.entries(cart);if(!entries.length)return;let total=entries.reduce((s,[id,q])=>s+PRODUCTS.find(p=>p.id===id).price*q,0);let lines=['Hola JS NEXO, quiero consultar este pedido:','',...entries.map(([id,q])=>{let p=PRODUCTS.find(p=>p.id===id);return `• ${p.name} × ${q} — ${fmt(p.price*q)}`}),'',`Subtotal: ${fmt(total)}`,'','¿Me confirman disponibilidad, entrega y precio final?'];window.open(`https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener')}
+function order(){
+ const entries=Object.entries(cart);if(!entries.length)return;
+ const knownTotal=entries.reduce((s,[id,q])=>s+(PRODUCTS.find(p=>p.id===id).price??0)*q,0);
+ const anyUnknown=entries.some(([id])=>PRODUCTS.find(p=>p.id===id).price==null);
+ const lines=['Hola JS NEXO, quisiera consultar estos relojes y accesorios:','',...entries.map(([id,q])=>{
+   const p=PRODUCTS.find(p=>p.id===id);return `• ${p.name} × ${q} — ${p.price==null?'Precio por confirmar':fmt(p.price*q)}`;
+ }),'',anyUnknown?(knownTotal>0?`Subtotal de productos con precio: ${fmt(knownTotal)} (faltan artículos por cotizar)`:'Precio total: por confirmar'):`Subtotal: ${fmt(knownTotal)}`,'','¿Me confirman precios, disponibilidad y entrega?'];
+ window.open(`https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`,'_blank','noopener');
+}
 function openDetail(id){let p=PRODUCTS.find(p=>p.id===id);if(!p)return;activeDetail=id;$('#detailImage').src=imageFor(p);$('#detailImage').alt=`Foto de ${p.name}`;$('#detailCategory').textContent=catName(p.category).toUpperCase();$('#detailTitle').textContent=p.name;$('#detailDescription').textContent=p.description;$('#detailPrice').textContent=fmt(p.price);$('#detailStock').textContent=siteData?.site?.showStock===false?'Consultar disponibilidad':stockText(p);$('#detailAdd').disabled=p.stock===0;openDialog('productDialog')}
 function openDialog(id){if(dialogName)closeDialog(false);dialogName=id;previousFocus=document.activeElement;$('#scrim').hidden=false;$('#'+id).hidden=false;document.body.style.overflow='hidden';$('#'+id).querySelector('button')?.focus()}
 function closeDialog(restore=true){if(!dialogName)return;$('#'+dialogName).hidden=true;$('#scrim').hidden=true;dialogName=null;document.body.style.overflow='';if(restore)previousFocus?.focus()}
@@ -207,9 +341,9 @@ function hydrateSite(data){
  if(data.published){
    notice.textContent='COLECCIÓN ACTUALIZADA · El precio y el stock se confirman al realizar tu pedido.';
    notice.classList.add('live-note');
-   setText('#stockLabel','ARTÍCULOS SELECCIONADOS · DISPONIBILIDAD SUJETA A CONFIRMACIÓN');
+   setText('#stockLabel','RELOJES SELECCIONADOS · DISPONIBILIDAD SUJETA A CONFIRMACIÓN');
  }else{
-   notice.textContent='CATÁLOGO DE DEMOSTRACIÓN · Configura y publica tus productos reales desde el panel administrativo.';
+   notice.textContent='10 RELOJES EN COLECCIÓN · Consulta precios y disponibilidad por WhatsApp.';
  }
  const banner=$('#siteBanner');banner.hidden=!s.showBanner||!s.banner;banner.textContent=s.banner||'';
  {const mark=$('.brand-mark');mark.replaceChildren();if(s.logoImage){const im=document.createElement('img');im.src=s.logoImage;im.alt='Logotipo de '+STORE.name;im.decoding='async';mark.append(im)}else{mark.textContent='JS'}}

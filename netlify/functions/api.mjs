@@ -1,6 +1,7 @@
 import { createHmac, timingSafeEqual, randomUUID } from 'node:crypto';
 import { getStore } from '@netlify/blobs';
 import { SEED } from './seed.mjs';
+import { WATCHES } from './watches.mjs';
 
 const publicHeaders = {
   'Cache-Control': 'no-store',
@@ -41,6 +42,21 @@ function throttleKey(req,context){const ip=context?.ip||req.headers.get('x-nf-cl
 function cleanString(v,max=300){return typeof v==='string'?v.trim().slice(0,max):''}
 function imagePathValid(v){return v===''||/^assets\/[a-z0-9_-]+\.(?:svg|png|jpg|jpeg|webp)$/i.test(v)||/^\/\.netlify\/functions\/api\?action=image&id=[0-9a-f-]{36}$/i.test(v)}
 function safeId(v){return typeof v==='string'&&/^[a-zA-Z0-9_-]{1,42}$/.test(v)}
+function withWatchCollection(data){
+  // Inserta la colección de relojes una sola vez, sin sobrescribir ediciones reales.
+  // Retira únicamente las demostraciones SIN MODIFICAR que traía la plantilla.
+  const original=data||SEED;
+  if(original.watchCollectionImported===true)return original;
+  const demoNames=new Map([
+    ['js01','Noir Classic'],['js02','Silver Edition'],['js03','Pulse Smart'],
+    ['js04','Active Motion'],['js05','Air Mini'],['js06','Studio Headset'],
+    ['js07','Power Cube'],['js08','Desk Stand']
+  ]);
+  const existing=(original.products||[]).filter(p=>demoNames.get(p.id)!==p.name);
+  const ids=new Set(existing.map(p=>p.id));
+  return {...original,published:true,watchCollectionImported:true,
+    products:[...WATCHES.filter(p=>!ids.has(p.id)),...existing]};
+}
 function validate(input){
   if(!input||typeof input!=='object')throw Error('Se requiere un catálogo válido.');
   if(!input.site||typeof input.site!=='object')throw Error('Faltan los datos del negocio.');
@@ -60,11 +76,13 @@ function validate(input){
     productIDs.add(p.id);
     if(!ids.has(p.category)||p.category==='all')throw Error('Categoría de producto inválida.');
     const name=cleanString(p.name,100);if(!name)throw Error('Falta el nombre de un producto.');
-    const price=Number(p.price),stock=Number(p.stock);
-    if(!Number.isFinite(price)||price<0||price>10000000)throw Error('Precio inválido.');
-    if(!Number.isInteger(stock)||stock<0||stock>999999)throw Error('Stock inválido.');
+    // null means 'consultar', without inventing an unprovided price or stock.
+    const price=(p.price==null||p.price==='')?null:Number(p.price);
+    const stock=(p.stock==null||p.stock==='')?null:Number(p.stock);
+    if(price!==null&&(!Number.isFinite(price)||price<0||price>10000000))throw Error('Precio inválido.');
+    if(stock!==null&&(!Number.isInteger(stock)||stock<0||stock>999999))throw Error('Stock inválido.');
     const image=cleanString(p.image,250);if(!imagePathValid(image))throw Error('La imagen debe subirse desde el panel o usar un archivo assets válido.');
-    return {id:p.id,name,category:p.category,price:Math.round(price*100)/100,stock,image,description:cleanString(p.description,1600),badge:cleanString(p.badge,35),featured:!!p.featured,visible:p.visible!==false};
+    return {id:p.id,name,category:p.category,price:price===null?null:Math.round(price*100)/100,stock,image,description:cleanString(p.description,1600),badge:cleanString(p.badge,35),featured:!!p.featured,visible:p.visible!==false};
   });
   const d=SEED.site,s=input.site;
   const site={};
@@ -82,7 +100,7 @@ function validate(input){
   site.heroImage=cleanString(s.heroImage??'',250);
   if(!imagePathValid(site.logoImage)||!imagePathValid(site.heroImage))throw Error('La imagen de marca debe subirse desde el panel.');
   site.showStock=s.showStock!==false;site.showBanner=!!s.showBanner;
-  return {version:1,published:true,updatedAt:new Date().toISOString(),site,categories,products};
+  return {version:1,published:true,updatedAt:new Date().toISOString(),site,categories,products,watchCollectionImported:input.watchCollectionImported===true};
 }
 async function jsonBody(req,max){
   const length=Number(req.headers.get('content-length')||0);
@@ -104,7 +122,7 @@ export default async function handler(req,context){
   try{
     if(req.method==='GET'&&action==='public'){
       const data=await catalogStore().get('catalog',{type:'json'});
-      return html(data||SEED,200,{
+      return html(withWatchCollection(data),200,{
         'Netlify-CDN-Cache-Control':'public, durable, max-age=10',
         'Netlify-Vary':'query=action'
       });
@@ -155,7 +173,7 @@ export default async function handler(req,context){
     if(['save','upload'].includes(action)&&process.env.CONTEXT&&process.env.CONTEXT!=='production')return failure('Solo puedes publicar desde el sitio principal (producción), no desde una vista previa.',403);
     if(req.method==='GET'&&action==='state'){
       const data=await catalogStore().get('catalog',{type:'json'});
-      return html(data||SEED);
+      return html(withWatchCollection(data));
     }
     if(req.method==='POST'&&action==='save'){
       if(!originOK(req))return failure('Origen no permitido.',403);

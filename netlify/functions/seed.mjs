@@ -1,6 +1,7 @@
+import { WATCHES } from './watches.mjs';
 export const SEED = {
   "version": 1,
-  "published": false,
+  "published": true,
   "updatedAt": null,
   "site": {
     "brand": "JS NEXO",
@@ -34,7 +35,7 @@ export const SEED = {
     "contactIntro": "¿Viste algo que te gustó? Escríbenos para confirmar disponibilidad, entrega y todos los detalles de tu compra.",
     "footerText": "DISEÑADO PARA DESTACAR.",
     "defaultTheme": "obsidian",
-    "banner": "CATÁLOGO EN PREPARACIÓN · CONSULTA DISPONIBILIDAD POR WHATSAPP",
+    "banner": "10 RELOJES SELECCIONADOS · CONSULTA PRECIO Y DISPONIBILIDAD",
     "logoImage": "",
     "heroImage": "",
     "showStock": true,
@@ -62,102 +63,6 @@ export const SEED = {
       "Accesorios"
     ]
   ],
-  "products": [
-    {
-      "id": "js01",
-      "name": "Noir Classic",
-      "category": "relojes",
-      "price": 990,
-      "stock": 7,
-      "image": "assets/watch.svg",
-      "description": "Reloj analógico de estética sobria, ideal para complementar tu estilo.",
-      "featured": true,
-      "visible": true,
-      "badge": "Destacado"
-    },
-    {
-      "id": "js02",
-      "name": "Silver Edition",
-      "category": "relojes",
-      "price": 1190,
-      "stock": 4,
-      "image": "assets/watch.svg",
-      "description": "Una interpretación minimalista del reloj clásico con acabado plateado.",
-      "featured": true,
-      "visible": true,
-      "badge": ""
-    },
-    {
-      "id": "js03",
-      "name": "Pulse Smart",
-      "category": "smart",
-      "price": 1890,
-      "stock": 5,
-      "image": "assets/smart.svg",
-      "description": "Reloj inteligente de diseño compacto y estética contemporánea.",
-      "featured": true,
-      "visible": true,
-      "badge": "Nuevo"
-    },
-    {
-      "id": "js04",
-      "name": "Active Motion",
-      "category": "smart",
-      "price": 2150,
-      "stock": 2,
-      "image": "assets/smart.svg",
-      "description": "Smartwatch conceptual para quienes buscan un look tecnológico.",
-      "featured": false,
-      "visible": true,
-      "badge": ""
-    },
-    {
-      "id": "js05",
-      "name": "Air Mini",
-      "category": "audio",
-      "price": 850,
-      "stock": 10,
-      "image": "assets/earbuds.svg",
-      "description": "Audífonos inalámbricos pequeños con estuche de transporte.",
-      "featured": false,
-      "visible": true,
-      "badge": ""
-    },
-    {
-      "id": "js06",
-      "name": "Studio Headset",
-      "category": "audio",
-      "price": 1590,
-      "stock": 6,
-      "image": "assets/headphones.svg",
-      "description": "Audífonos de diadema con una silueta limpia y moderna.",
-      "featured": false,
-      "visible": true,
-      "badge": ""
-    },
-    {
-      "id": "js07",
-      "name": "Power Cube",
-      "category": "accesorios",
-      "price": 490,
-      "stock": 9,
-      "image": "assets/charger.svg",
-      "description": "Cargador compacto de estilo minimalista para uso diario.",
-      "featured": false,
-      "visible": true,
-      "badge": ""
-    },
-    {
-      "id": "js08",
-      "name": "Desk Stand",
-      "category": "accesorios",
-      "price": 390,
-      "stock": 0,
-      "image": "assets/stand.svg",
-      "description": "Soporte de escritorio para colocar el teléfono cómodamente.",
-      "featured": false,
-      "visible": true,
-      "badge": ""
-    }
-  ]
+  "products": [...WATCHES],
+  "watchCollectionImported": true
 };
