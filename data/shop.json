@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "id": "reloj-01",
+      "title": "Ferrari Racing Black",
+      "description": "Reloj deportivo negro con esfera oscura, detalles naranjas y correa de silicona. Un estilo dinámico y llamativo.",
+      "image": "shop/images/reloj-01.webp",
+      "category": "Deportivo",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-02",
+      "title": "Ferrari Racing Ivory",
+      "description": "Diseño deportivo de esfera clara, acentos naranjas y correa negra. Contraste elegante y moderno.",
+      "image": "shop/images/reloj-02.webp",
+      "category": "Deportivo",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-03",
+      "title": "Spirit Silver Classic",
+      "description": "Reloj plateado de brazalete metálico y esfera blanca con subesferas. Una apariencia sofisticada para cualquier ocasión.",
+      "image": "shop/images/reloj-03.webp",
+      "category": "Clásico",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-04",
+      "title": "Magic Blue Accent",
+      "description": "Reloj de acero plateado con esfera negra, detalles azules y marcadores brillantes. Moderno, sobrio y distintivo.",
+      "image": "shop/images/reloj-04.webp",
+      "category": "Clásico",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-05",
+      "title": "Magic Black Chrono",
+      "description": "Brazalete metálico plateado, esfera oscura y diseño de inspiración cronógrafo. Estética clásica con carácter.",
+      "image": "shop/images/reloj-05.webp",
+      "category": "Clásico",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-06",
+      "title": "Magic Urban Steel",
+      "description": "Reloj metálico con esfera azul oscuro, números destacados y ventanilla de fecha. Un estilo urbano y versátil.",
+      "image": "shop/images/reloj-06.webp",
+      "category": "Clásico",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-07",
+      "title": "Magic Roman Classic",
+      "description": "Elegante reloj plateado con esfera negra, números romanos y fechador. Inspiración tradicional con acabado moderno.",
+      "image": "shop/images/reloj-07.webp",
+      "category": "Clásico",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-08",
+      "title": "Magic Graphite Sport",
+      "description": "Brazalete de acero, esfera grafito y marcadores deportivos. Complemento ideal para un look casual elegante.",
+      "image": "shop/images/reloj-08.webp",
+      "category": "Clásico",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-09",
+      "title": "Ferrari Carbon Sport",
+      "description": "Reloj negro con correa deportiva perforada, esfera gris y detalles rojos. Diseño atrevido de inspiración automovilística.",
+      "image": "shop/images/reloj-09.webp",
+      "category": "Deportivo",
+      "available": true,
+      "price": ""
+    },
+    {
+      "id": "reloj-10",
+      "title": "Ferrari Red Racing",
+      "description": "Reloj negro de correa texturizada con costuras rojas y esfera deportiva. Presencia intensa y estilo racing.",
+      "image": "shop/images/reloj-10.webp",
+      "category": "Deportivo",
+      "available": true,
+      "price": ""
+    }
+  ]
+}

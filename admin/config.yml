@@ -1,0 +1,278 @@
+backend:
+  name: github
+  repo: santy23gg1566/simo-portafolio
+  branch: main
+locale: es
+media_folder: SIMO_V8_ADMIN_READY/uploads
+public_folder: /uploads
+collections:
+- name: flyers
+  label: 01 · Flyers y proyectos
+  description: Añade, ordena, oculta y elimina tus diseños.
+  files:
+  - name: proyectos
+    label: Gestionar galería
+    file: SIMO_V8_ADMIN_READY/data/projects.json
+    format: json
+    fields:
+    - label: Galería de flyers
+      name: projects
+      widget: list
+      required: false
+      collapsed: false
+      summary: '{{fields.title}} · {{fields.category}}'
+      fields:
+      - label: Título del flyer
+        name: title
+        widget: string
+      - label: Imagen
+        name: image
+        widget: image
+      - label: Descripción de la imagen
+        name: alt
+        widget: string
+        required: false
+      - label: Categoría
+        name: category
+        widget: select
+        options:
+        - Flyers
+        - Eventos
+        - Publicidad
+        - Branding
+        - Social Media
+        - Otros
+        default: Flyers
+      - label: Año
+        name: year
+        widget: string
+        required: false
+      - label: Descripción
+        name: description
+        widget: text
+      - label: Enlace a proyecto o cliente
+        name: link
+        widget: string
+        required: false
+      - label: Mostrar públicamente
+        name: published
+        widget: boolean
+        default: true
+- name: inicio
+  label: 02 · Inicio (Home)
+  description: Edita portada, mensajes y cinta animada.
+  files:
+  - name: home
+    label: Editar portada
+    file: SIMO_V8_ADMIN_READY/data/home.json
+    format: json
+    fields:
+    - label: Título principal · línea 1
+      name: hero_line_1
+      widget: string
+    - label: Título principal · línea 2
+      name: hero_line_2
+      widget: string
+    - label: Título principal · línea 3
+      name: hero_line_3
+      widget: string
+    - label: Presentación corta
+      name: hero_description
+      widget: text
+    - label: Etiqueta superior
+      name: hero_eyebrow
+      widget: string
+    - label: Botón principal
+      name: primary_button
+      widget: string
+    - label: Botón secundario
+      name: secondary_button
+      widget: string
+    - label: Mostrar flyers 3D decorativos
+      name: show_showcase
+      widget: boolean
+      default: true
+    - label: Mostrar cinta animada
+      name: show_ticker
+      widget: boolean
+      default: true
+    - label: Palabras de la cinta
+      name: ticker_text
+      widget: string
+    - label: Mostrar anuncio superior
+      name: announcement_enabled
+      widget: boolean
+      default: false
+    - label: Texto del anuncio
+      name: announcement_text
+      widget: string
+      required: false
+    - label: Enlace opcional del anuncio
+      name: announcement_link
+      widget: string
+      required: false
+- name: portafolio
+  label: 03 · Portafolio
+  description: Personaliza la presentación de la galería y su mensaje vacío.
+  files:
+  - name: portafolio
+    label: Editar portafolio
+    file: SIMO_V8_ADMIN_READY/data/portfolio.json
+    format: json
+    fields:
+    - label: Título línea 1
+      name: portfolio_line_1
+      widget: string
+    - label: Título línea 2
+      name: portfolio_line_2
+      widget: string
+    - label: Título línea 3
+      name: portfolio_line_3
+      widget: string
+    - label: Descripción de la sección
+      name: portfolio_description
+      widget: text
+    - label: Mensaje sin flyers
+      name: empty_title
+      widget: string
+    - label: Descripción sin flyers
+      name: empty_description
+      widget: text
+- name: informacion
+  label: 04 · Información
+  description: Tu presentación y laboratorio visual.
+  files:
+  - name: informacion
+    label: Editar información
+    file: SIMO_V8_ADMIN_READY/data/about.json
+    format: json
+    fields:
+    - label: Título línea 1
+      name: about_line_1
+      widget: string
+    - label: Título línea 2
+      name: about_line_2
+      widget: string
+    - label: Título línea 3
+      name: about_line_3
+      widget: string
+    - label: Sobre mí
+      name: about_description
+      widget: text
+    - label: Frase de firma
+      name: signature
+      widget: string
+    - label: Mostrar laboratorio interactivo
+      name: show_lab
+      widget: boolean
+      default: true
+- name: contacto
+  label: 05 · Contacto y redes
+  description: Gestiona las tarjetas 3D de Instagram y TikTok.
+  files:
+  - name: contacto
+    label: Editar redes
+    file: SIMO_V8_ADMIN_READY/data/contact.json
+    format: json
+    fields:
+    - label: Título línea 1
+      name: contact_line_1
+      widget: string
+    - label: Título línea 2
+      name: contact_line_2
+      widget: string
+    - label: Título línea 3
+      name: contact_line_3
+      widget: string
+    - label: Descripción
+      name: contact_description
+      widget: text
+    - label: Enlace completo de Instagram
+      name: instagram
+      widget: string
+    - label: Enlace completo de TikTok
+      name: tiktok
+      widget: string
+- name: apariencia
+  label: 06 · Temas y rendimiento
+  description: Elige el aspecto inicial y los efectos predeterminados para nuevos visitantes.
+  files:
+  - name: apariencia
+    label: Editar experiencia
+    file: SIMO_V8_ADMIN_READY/data/experience.json
+    format: json
+    fields:
+    - label: Tema inicial para nuevos visitantes
+      name: default_theme
+      widget: select
+      options:
+      - label: Obsidiana
+        value: dark
+      - label: Claro
+        value: light
+      - label: Galaxy
+        value: galaxy
+      - label: Aurora
+        value: aurora
+      - label: Atardecer
+        value: sunset
+      - label: Océano
+        value: ocean
+      - label: Cyberpunk
+        value: cyberpunk
+      - label: Sakura
+        value: sakura
+      - label: Bosque
+        value: forest
+      - label: Arena
+        value: sand
+      - label: Monocromo
+        value: mono
+      - label: Carmesí
+        value: crimson
+      - label: Ártico
+        value: arctic
+      - label: Matrix Rain
+        value: matrix
+      - label: Retro Wave
+        value: retrowave
+      - label: Holograma
+        value: hologram
+      - label: Pixel World
+        value: pixel
+      - label: Constelaciones
+        value: starlight
+      - label: Lava Flow
+        value: lava
+      - label: Bauhaus
+        value: bauhaus
+      - label: Blueprint
+        value: blueprint
+      - label: Prisma
+        value: prism
+      - label: Glitch Lab
+        value: glitch
+      default: dark
+    - label: Animaciones activadas por defecto
+      name: default_motion
+      widget: boolean
+      default: true
+    - label: Efecto 3D activado por defecto
+      name: default_interactive
+      widget: boolean
+      default: true
+    - label: Fondos temáticos activados
+      name: default_ambient
+      widget: boolean
+      default: true
+    - label: Optimización inteligente por defecto
+      name: default_auto_optimize
+      widget: boolean
+      default: true
+    - label: Máximo rendimiento por defecto
+      name: default_performance
+      widget: boolean
+      default: false
+    - label: Texto del pie de página
+      name: footer_note
+      widget: string

@@ -1,0 +1,1 @@
+SIMO V10: editor de flyers dentro del panel. Reemplaza solo admin/index.html para preservar el contenido.
