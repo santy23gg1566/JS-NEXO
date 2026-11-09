@@ -141,9 +141,8 @@ export default async function handler(req,context){
       }
       if(!['image/png','image/jpeg','image/webp'].includes(mime))return failure('Imagen inválida.',404);
       return new Response(buf,{status:200,headers:{
-        'Content-Type':mime,'Cache-Control':'public, max-age=31536000, immutable',
-        'Netlify-CDN-Cache-Control':'public, durable, max-age=31536000, immutable',
-        'Netlify-Vary':'query=action|id',
+        'Content-Type':mime,'Cache-Control':'no-store, max-age=0',
+        'Netlify-CDN-Cache-Control':'no-store',
         'X-Content-Type-Options':'nosniff'
       }});
     }
