@@ -1,0 +1,15 @@
+{
+  "productos": [
+    {
+      "nombre": "Reloj Urban Steel",
+      "descripcion": "Reloj de diseño contemporáneo con esfera elegante y acabado metálico. Un accesorio versátil para destacar tu estilo.",
+      "categoria": "relojes",
+      "archivo": "reloj-urbano.webp",
+      "precio": null,
+      "existencias": null,
+      "etiqueta": "Nuevo",
+      "destacado": false,
+      "visible": true
+    }
+  ]
+}
